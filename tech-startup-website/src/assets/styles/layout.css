@@ -1,0 +1,54 @@
+/* Layout styles for the tech startup website */
+
+/* Global layout settings */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Flexbox container for main sections */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Grid layout for the homepage */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Responsive header */
+.header {
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive footer */
+.footer {
+    width: 100%;
+    padding: 20px;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .home-grid {
+        grid-template-columns: 1fr;
+    }
+}
