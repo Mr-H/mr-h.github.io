@@ -1,0 +1,288 @@
+/* Custom styles for the tech services website */
+
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    /* keep header full width but give a subtle bottom border to separate from page */
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Header inner: full-width positioning context for logo/nav */
+.header-inner {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: clamp(0.5rem, 3vw, 1.5rem);
+    display: block;
+}
+
+/* Navigation styles */
+
+/* Dark theme overrides */
+body.matcha-dark a { color: var(--accent); }
+body.matcha-dark .lead { color: #c7d6e2; }
+body.matcha-dark header { background: #121418; border-bottom-color: rgba(255,255,255,0.04); }
+body.matcha-dark .logo-frame { border-color: rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+body.matcha-dark nav a { color: #e6eef8; }
+body.matcha-dark nav a:hover { background: rgba(255,255,255,0.03); }
+body.matcha-dark .button { background: rgba(255,255,255,0.04); color: #e6eef8; border-color: rgba(255,255,255,0.06); }
+body.matcha-dark .button.primary { background: var(--accent); color: #fff; }
+body.matcha-dark footer { background: #0b0f14; border-top-color: rgba(255,255,255,0.02); }
+ 
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+/* Footer styles */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Button styles */
+.button {
+    background: #5cb85c;
+    /* color: white; */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #4cae4c;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    nav {
+        display: block;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+    }
+}
+
+/* Hero banner styles */
+.hero {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* allow centered overlay of content */
+    padding: 0; /* image handles vertical spacing */
+    background: var(--bg-default, #121418); /* default to Matcha dark background */
+}
+/* .hero-inner {
+    position: relative;
+    width: 100%;
+    padding-inline: clamp(0.75rem, 4vw, 3rem);
+    box-sizing: border-box;
+} */
+.hero-content {
+    position: absolute; /* center over the hero image but preserve side gutters */
+    top: 50%;
+    left: clamp(1rem, 4vw, 2rem);
+    right: clamp(1rem, 4vw, 2rem);
+    transform: translateY(-50%);
+    z-index: 2;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 900px; /* keep headline narrow on large screens */
+    margin: 0 auto;
+    text-align: center; /* center headline and buttons */
+    padding-inline: clamp(0.75rem, 4vw, 2rem);
+}
+
+/* .hero p {
+    color: var(--muted);
+    margin: 0 0 1rem 0;
+    font-size: 1.05rem;
+}
+.hero-cta .button {
+    margin-right: 0.6rem;
+}
+ .button.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: transparent;
+} */
+.hero-image {
+    width: 100%;
+    display: block;
+}
+.hero-image img, .hero-image svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* limit visual height to roughly 50% of the viewport while keeping full width */
+    max-height: 45vh;
+    object-fit: cover;
+}
+
+/* When using the Matcha dark theme, ensure hero background and text match theme vars */
+.matcha-dark .hero {
+    background: var(--bg-default);
+}
+
+.hero-image img.fade-out {
+    opacity: 0;
+    transform: scale(0.995);
+}
+
+@media (max-width: 900px) {
+    /* Mobile: stack content and image, disable overlay positioning */
+    .hero {
+        padding: 1.25rem 0;
+    }
+    .hero-content {
+        position: static;
+        transform: none;
+        margin: 0 auto 1rem auto;
+        text-align: center;
+        max-width: 100%;
+        padding-inline: clamp(0.75rem, 6vw, 1.5rem);
+    }
+    .hero-image { width: 100%; }
+    /* slightly smaller max-height on small screens for better fit */
+    .hero-image img, .hero-image svg {
+        max-height: 35vh;
+    }
+}
+
+/* Responsive site-wide improvements */
+/* Make images and media fluid */
+img, video, picture {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header/logo */
+header .logo {
+    width: 100%;
+    margin: 0;
+    padding-inline: clamp(0.75rem, 3vw, 2rem);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* keep logo to left */
+    gap: 1rem;
+}
+header .logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+/* Ensure header uses full width and places nav to the side */
+/* Reverted .header-inner and header nav flex changes to restore original centered nav behavior */
+
+/* Add a subtle border around the logo to maintain visual separation */
+header .logo .logo-frame {
+    display: inline-block;
+    padding: 6px 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.01);
+}
+
+/* Navigation: horizontal on desktop, stacked on mobile */
+nav {
+    background: #444;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/* remove empty rules */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 14px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+    nav a {
+        padding: 12px 16px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+}
+
+/* Mobile: stack logo above nav and remove absolute positioning */
+@media (max-width: 520px) {
+    header .logo {
+        position: static;
+        transform: none;
+        margin-bottom: 0.5rem;
+    }
+    .header-inner { padding-inline: 1rem; }
+}
+
+/* Constrain main content sections for readability */
+main > section, .page-content, .container {
+    width: 100%;
+    margin: 0;
+    padding-inline: clamp(0.75rem, 4vw, 2.25rem);
+    padding-block: 1.25rem;
+    box-sizing: border-box;
+}
+
+/* Make footer content constrained too */
+footer > div, footer .container {
+    width: 100%;
+    margin: 0;
+    padding-inline: clamp(0.75rem, 4vw, 2rem);
+    padding-block: 1rem;
+}
+
+/* Buttons: stack on small screens for easier tapping */
+.button {
+    display: inline-block;
+}
+@media (max-width: 520px) {
+    .button, .hero-cta .button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 0.6rem 0;
+    }
+}
+
+/* Responsive typography */
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+@media (min-width: 900px) {
+    h1 { font-size: 2.4rem; }
+}
+
+/* Utility: improve spacing on very small screens */
+@media (max-width: 420px) {
+    body { font-size: 15px; }
+}
+
+/* Ensure hero uses the full viewport background when desired */
+.hero { width: 100% !important; }
+.hero-inner { margin: 0 !important; }
