@@ -242,12 +242,19 @@ nav a {
 }
 
 /* Constrain main content sections for readability */
-main > section, .page-content, .container {
+main > section,
+.page-content,
+.container {
+    /* Box model */
+    box-sizing: border-box; /* include padding and border in width calculations */
+
+    /* Sizing */
     width: 100%;
     margin: 0;
-    padding-inline: clamp(0.75rem, 4vw, 2.25rem);
-    padding-block: 1.25rem;
-    box-sizing: border-box;
+
+    /* Spacing: vertical then horizontal (gutter) */
+    padding-block: 1.25rem; /* vertical spacing */
+    padding-inline: clamp(0.75rem, 4vw, 2.25rem); /* horizontal gutters */
 }
 
 /* Make footer content constrained too */
