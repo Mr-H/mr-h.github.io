@@ -290,6 +290,18 @@ h2 { font-size: 1.5rem; }
     body { font-size: 15px; }
 }
 
+/* Contact form helper classes */
+.contact__message {
+    margin-top: 1rem;
+    display: none;
+}
+.contact__message--visible {
+    display: block;
+}
+.contact__or-email {
+    margin-top: 1rem;
+}
+
 /* Ensure hero uses the full viewport background when desired */
 .hero { width: 100% !important; }
 .hero-inner { margin: 0 !important; }

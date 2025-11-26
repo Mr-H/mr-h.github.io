@@ -33,7 +33,7 @@
 
       <h2>Get in Touch</h2>
 
-      <form action="https://api.web3forms.com/submit" method="POST">
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="f2e9eb41-ed60-420f-b08b-f896dd660fb7">
         <input type="text" name="name" required>
         <input type="email" name="email" required>
@@ -41,7 +41,7 @@
         <button type="submit">Submit</button>
       </form>
 
-      <div id="contactMessage" aria-live="polite" style="margin-top:1rem;display:none"></div>
+      <div id="contactMessage" aria-live="polite" class="contact__message"></div>
 
       <script>
         // Optional: AJAX submit to Formsubmit to avoid full page redirect
@@ -76,7 +76,7 @@
         })();
       </script>
 
-      <p style="margin-top:1rem">Or email <a href="mailto:hello@objectclass.example">hello@objectclass.example</a></p>
+      <p class="contact__or-email">Or email <a href="mailto:hello@objectclass.example">hello@objectclass.example</a></p>
     </section>
   </main>
 
