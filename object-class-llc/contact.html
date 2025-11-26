@@ -35,9 +35,18 @@
 
       <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="f2e9eb41-ed60-420f-b08b-f896dd660fb7">
-        <input type="text" name="name" required>
-        <input type="email" name="email" required>
-        <textarea name="message" required></textarea>
+        <label>
+          Name
+          <input type="text" name="name" required placeholder="Your name">
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required placeholder="you@example.com">
+        </label>
+        <label>
+          Message
+          <textarea name="message" required placeholder="Tell us about your project"></textarea>
+        </label>
         <button type="submit">Submit</button>
       </form>
 
@@ -50,9 +59,10 @@
           const msg = document.getElementById('contactMessage');
 
           form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            msg.style.display = 'none';
-            const data = new FormData(form);
+              e.preventDefault();
+              msg.classList.remove('contact__message--visible');
+              msg.textContent = '';
+              const data = new FormData(form);
             try {
               const res = await fetch(form.action, {
                 method: 'POST',
@@ -61,16 +71,16 @@
               });
               if (res.ok) {
                 msg.textContent = 'Thanks — your message was sent.';
-                msg.style.display = 'block';
+                msg.classList.add('contact__message--visible');
                 form.reset();
               } else {
                 const err = await res.json();
                 msg.textContent = err?.message || 'Submission failed — please try again.';
-                msg.style.display = 'block';
+                msg.classList.add('contact__message--visible');
               }
             } catch (err) {
               msg.textContent = 'Network error — please try again later.';
-              msg.style.display = 'block';
+              msg.classList.add('contact__message--visible');
             }
           });
         })();
