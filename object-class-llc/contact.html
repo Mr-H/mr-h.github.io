@@ -30,7 +30,53 @@
   <main>
     <section class="container">
       <h1>Contact</h1>
-      <p>Please email <a href="mailto:hello@objectclass.example">hello@objectclass.example</a> for inquiries.</p>
+
+      <h2>Get in Touch</h2>
+
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="f2e9eb41-ed60-420f-b08b-f896dd660fb7">
+        <input type="text" name="name" required>
+        <input type="email" name="email" required>
+        <textarea name="message" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="contactMessage" aria-live="polite" style="margin-top:1rem;display:none"></div>
+
+      <script>
+        // Optional: AJAX submit to Formsubmit to avoid full page redirect
+        (function() {
+          const form = document.getElementById('contactForm');
+          const msg = document.getElementById('contactMessage');
+
+          form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            msg.style.display = 'none';
+            const data = new FormData(form);
+            try {
+              const res = await fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: data
+              });
+              if (res.ok) {
+                msg.textContent = 'Thanks — your message was sent.';
+                msg.style.display = 'block';
+                form.reset();
+              } else {
+                const err = await res.json();
+                msg.textContent = err?.message || 'Submission failed — please try again.';
+                msg.style.display = 'block';
+              }
+            } catch (err) {
+              msg.textContent = 'Network error — please try again later.';
+              msg.style.display = 'block';
+            }
+          });
+        })();
+      </script>
+
+      <p style="margin-top:1rem">Or email <a href="mailto:hello@objectclass.example">hello@objectclass.example</a></p>
     </section>
   </main>
 
