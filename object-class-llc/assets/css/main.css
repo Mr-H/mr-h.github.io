@@ -98,17 +98,26 @@ footer {
     z-index: 2;
     box-sizing: border-box;
     width: auto;
-    max-width: 900px; /* keep headline narrow on large screens */
+    max-width: 850px; /* keep headline narrow on large screens */
     margin: 0 auto;
     text-align: center; /* center headline and buttons */
     padding-inline: clamp(0.75rem, 4vw, 2rem);
 }
 
-/* .hero p {
-    color: var(--muted);
-    margin: 0 0 1rem 0;
-    font-size: 1.05rem;
+/* More specific selector to ensure `.lead` inside the hero uses dark gray
+   even when the dark theme sets a different `.lead` color elsewhere. */
+body.matcha-dark .hero .lead,
+.hero .lead {
+    color: #fdfafabc;
 }
+.hero-title {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    color: var(--dark-bg-subtle);
+}
+
+/*
 .hero-cta .button {
     margin-right: 0.6rem;
 }
